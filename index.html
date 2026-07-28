@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Wesam ❤️</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #000;
+    color: white;
+    font-family: Arial, Tahoma, sans-serif;
+    overflow-x: hidden;
+}
+
+/* =========================
+   شاشة كلمة السر
+========================= */
+
+#passwordScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        radial-gradient(circle at center, #35002f 0%, #090009 45%, #000 100%);
+}
+
+.passwordBox {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: rgba(10, 0, 15, 0.85);
+
+    border: 2px solid #ff36d1;
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 15px #ff36d1,
+        0 0 40px rgba(255, 0, 200, 0.5);
+
+    animation: boxGlow 2s infinite alternate;
+}
+
+.passwordBox h1 {
+    color: #ff5dde;
+
+    font-size: 42px;
+
+    margin-bottom: 12px;
+
+    text-shadow:
+        0 0 10px #ff00cc,
+        0 0 30px #ff00cc;
+}
+
+.passwordBox .sweetText {
+    color: #fff;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 0 8px #ff36d1;
+}
+
+#passwordInput {
+    width: 100%;
+
+    padding: 15px;
+
+    border-radius: 30px;
+
+    border: 2px solid #00ffff;
+
+    background: #050505;
+
+    color: white;
+
+    outline: none;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    box-shadow:
+        0 0 15px #00ffff;
+}
+
+#unlockButton {
+    margin-top: 20px;
+
+    padding: 13px 35px;
+
+    border: 2px solid #ff36d1;
+
+    border-radius: 30px;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px #ff36d1,
+        0 0 25px #ff36d1;
+
+    transition: 0.3s;
+}
+
+#unlockButton:hover {
+    background: #ff36d1;
+    color: #000;
+}
+
+#errorMessage {
+    color: #ff4f6d;
+
+    margin-top: 15px;
+
+    display: none;
+}
+
+
+/* =========================
+   الموقع الرئيسي
+========================= */
+
+#mainContent {
+    display: none;
+
+    min-height: 100vh;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            #260020 0%,
+            #070007 35%,
+            #000 75%
+        );
+}
+
+.backgroundGlow {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 0, 200, 0.08),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 80% 60%,
+            rgba(0, 255, 255, 0.07),
+            transparent 25%
+        );
+}
+
+
+/* =========================
+   المقدمة
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px 20px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.heroSmall {
+    color: #00ffff;
+
+    font-size: 20px;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 10px #00ffff,
+        0 0 25px #00ffff;
+}
+
+.heroName {
+    color: #ff4fd8;
+
+    font-size: clamp(60px, 18vw, 130px);
+
+    text-shadow:
+        0 0 10px #ff4fd8,
+        0 0 30px #ff00cc,
+        0 0 70px #ff00cc;
+
+    animation: pulse 2s infinite alternate;
+}
+
+.heroTitle {
+    margin-top: 20px;
+
+    color: white;
+
+    font-size: clamp(35px, 10vw, 80px);
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #ff00ff,
+        0 0 50px #00ffff;
+}
+
+.scrollText {
+    margin-top: 50px;
+
+    color: #aaa;
+
+    font-size: 15px;
+
+    animation: bounce 1.5s infinite;
+}
+
+
+/* =========================
+   القصة
+========================= */
+
+.story {
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 40px 20px 100px;
+}
+
+
+/* =========================
+   الأقسام
+========================= */
+
+.photoSection {
+    margin-bottom: 140px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: translateY(80px);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+.photoSection.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* الصور */
+
+.photoSection img {
+    width: 100%;
+
+    max-width: 700px;
+
+    height: auto;
+
+    max-height: 80vh;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    border: 3px solid #ff36d1;
+
+    box-shadow:
+        0 0 15px #ff36d1,
+        0 0 40px rgba(255, 0, 200, 0.5),
+        0 0 80px rgba(0, 255, 255, 0.2);
+
+    display: block;
+
+    margin: 0 auto 35px;
+
+    transition:
+        transform 0.5s,
+        box-shadow 0.5s;
+}
+
+.photoSection img:hover {
+    transform: scale(1.02);
+
+    box-shadow:
+        0 0 25px #ff36d1,
+        0 0 60px #ff00cc;
+}
+
+
+/* الكلام */
+
+.loveText {
+    padding: 28px 20px;
+
+    color: white;
+
+    font-size: clamp(18px, 4vw, 25px);
+
+    line-height: 2;
+
+    text-align: center;
+
+    background:
+        rgba(20, 0, 25, 0.6);
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255, 54, 209, 0.5);
+
+    box-shadow:
+        0 0 15px rgba(255, 54, 209, 0.25);
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.4);
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 1s ease 0.4s,
+        transform 1s ease 0.4s;
+}
+
+.photoSection.show .loveText {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================
+   المفاجأة
+========================= */
+
+.surprise {
+    min-height: 70vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.surpriseText {
+    color: #00ffff;
+
+    font-size: clamp(25px, 7vw, 55px);
+
+    line-height: 1.7;
+
+    text-shadow:
+        0 0 10px #00ffff,
+        0 0 30px #00ffff;
+
+    opacity: 0;
+
+    transform: scale(0.7);
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+.surprise.show .surpriseText {
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+.surpriseHeart {
+    font-size: 70px;
+
+    margin-top: 30px;
+
+    animation: heartbeat 1.5s infinite;
+}
+
+
+/* =========================
+   النهاية
+========================= */
+
+.finalMessage {
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.finalTitle {
+    font-size: clamp(40px, 12vw, 90px);
+
+    color: #ff4fd8;
+
+    margin-bottom: 30px;
+
+    text-shadow:
+        0 0 10px #ff4fd8,
+        0 0 30px #ff00cc,
+        0 0 60px #ff00cc;
+
+    animation: pulse 2s infinite alternate;
+}
+
+.finalText {
+    max-width: 800px;
+
+    font-size: clamp(20px, 4vw, 30px);
+
+    line-height: 2;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px #ff36d1,
+        0 0 20px rgba(255, 0, 200, 0.5);
+}
+
+
+/* =========================
+   زر الموسيقى
+========================= */
+
+#musicButton {
+    position: fixed;
+
+    bottom: 20px;
+
+    left: 20px;
+
+    z-index: 100;
+
+    padding: 12px 20px;
+
+    border-radius: 30px;
+
+    border: 2px solid #00ffff;
+
+    background: rgba(0, 0, 0, 0.8);
+
+    color: #00ffff;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 25px #00ffff;
+}
+
+
+/* =========================
+   المؤثرات المتساقطة
+========================= */
+
+.fallingText {
+    position: fixed;
+
+    top: -100px;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+
+    animation: fall linear forwards;
+}
+
+.heart {
+    position: fixed;
+
+    top: -100px;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    animation: fall linear forwards;
+}
+
+
+/* =========================
+   الحركات
+========================= */
+
+@keyframes fall {
+
+    0% {
+        transform:
+            translateY(-100px)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.06);
+    }
+}
+
+@keyframes bounce {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+@keyframes boxGlow {
+
+    from {
+        box-shadow:
+            0 0 15px #ff36d1,
+            0 0 40px rgba(255, 0, 200, 0.4);
+    }
+
+    to {
+        box-shadow:
+            0 0 30px #ff36d1,
+            0 0 70px rgba(255, 0, 200, 0.7);
+    }
+}
+
+
+/* =========================
+   الموبايل
+========================= */
+
+@media (max-width: 600px) {
+
+    .story {
+        padding-left: 12px;
+
+        padding-right: 12px;
+    }
+
+    .photoSection img {
+        border-radius: 18px;
+    }
+
+    .loveText {
+        padding: 20px 15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     كلمة السر
+========================= -->
+
+<div id="passwordScreen">
+
+    <div class="passwordBox">
+
+        <h1>
+            For Wesam ❤️
+        </h1>
+
+        <div class="sweetText">
+
+            ممكن العالم كله يشوفك عادية…
+            بس بالنسبالي إنتِ أجمل حاجة حصلتلي ❤️
+
+        </div>
+
+        <input
+            id="passwordInput"
+            type="password"
+            placeholder="اكتبي كلمة السر ❤️"
+        >
+
+        <button
+            id="unlockButton"
+            onclick="unlock()"
+        >
+            افتحي المفاجأة ❤️
+        </button>
+
+        <div id="errorMessage">
+            كلمة السر غلط يا بطتي 🥹❤️
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     الموقع الرئيسي
+========================= -->
+
+<div id="mainContent">
+
+    <div class="backgroundGlow"></div>
+
+
+    <!-- الموسيقى -->
+
+    <audio id="music" loop>
+
+        <source
+            src="music.mp3"
+            type="audio/mpeg"
+        >
+
+    </audio>
+
+
+    <!-- =========================
+         المقدمة
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="heroSmall">
+            To the most beautiful girl in my life...
+        </div>
+
+        <div class="heroName">
+            وسام ❤️
+        </div>
+
+        <div class="heroTitle">
+            I LOVE YOU
+        </div>
+
+        <div class="scrollText">
+
+            انزلي لتحت يا بطتي
+            <br>
+            في حاجات كتير عايز أقولها ليكي ❤️
+
+            <br><br>
+
+            ↓
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         الصور والكلام
+    ========================= -->
+
+    <main class="story">
+
+
+        <!-- الصورة الأولى -->
+
+        <section class="photoSection">
+
+            <img
+                src="IMG-20260719-WA0004.jpg"
+                alt="Wesam"
+            >
+
+            <div class="loveText">
+
+                حبيبتي وقلبي وعمري كله ❤️🥹
+
+                <br><br>
+
+                بجد إنتِ عمري كله،
+                وأنا بحبك أوي أوي أوي،
+                ومش عايز أشوفك يوم زعلانة
+                ولا أشوف فيكي أي حاجة وحشة.
+
+                <br><br>
+
+                مش بحب أشوفك زعلانة
+                أو مضايقة من أي حاجة،
+                لأنك بجد تستاهلي كل حاجة حلوة في الدنيا.
+
+                <br><br>
+
+                تستاهلي تفضلي دايمًا مبسوطة وفرحانة،
+                وتستاهلي كل الحب ده كله ❤️
+
+                <br><br>
+
+                أنا بحبك أوي أوي أوي يا بطتي 🥹❤️
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             المفاجأة
+        ========================= -->
+
+        <section class="surprise">
+
+            <div class="surpriseText">
+
+                لسه في حاجة أهم
+                <br>
+                من كل الكلام ده...
+
+            </div>
+
+            <div class="surpriseHeart">
+                ❤️
+            </div>
+
+        </section>
+
+
+        <!-- الصورة الثانية -->
+
+        <section class="photoSection">
+
+            <img
+                src="IMG-20260719-WA0002.jpg"
+                alt="Wesam"
+            >
+
+            <div class="loveText">
+
+                إيه العيون الحلوة دي يا بطتي؟ 🥹❤️
+
+                <br><br>
+
+                بجد إنتِ أجمل وأحلى حاجة في الدنيا كلها،
+                ومهما حصل هفضل دايمًا شايفك
+                أحسن وأجمل واحدة في الدنيا ❤️
+
+                <br><br>
+
+                وهفضل جنبك،
+                ومش هسيبك لحظة أبدًا إن شاء الله.
+
+                <br><br>
+
+                وهفضل دايمًا سند ليكي،
+                وأكون جنبك في كل حاجة 🫂❤️
+
+            </div>
+
+        </section>
+
+
+        <!-- الصورة الثالثة -->
+
+        <section class="photoSection">
+
+            <img
+                src="lv_0_20260607233345.jpg"
+                alt="Wesam"
+            >
+
+            <div class="loveText">
+
+                وأخيرًا عايز أقولك إن الصورة دي
+                إن شاء الله تتحقق وتبقى حقيقة ❤️🥹
+
+                <br><br>
+
+                ونبقى فعلًا واقفين جنب بعض كده
+                ونتصور سوا ❤️📸
+
+                <br><br>
+
+                وإن شاء الله نكتب الكتاب،
+                ومش هسيب إيدك ولا هسيبك بجد ❤️🫂
+
+                <br><br>
+
+                إنتِ وحشتيني أوي أوي أوي،
+                وبجد بحبككككككككككككككككككككككككككك
+                أوي أوي أوي ❤️❤️
+
+                <br><br>
+
+                وبعشقك يا بطتي ❤️🥹
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         النهاية
+    ========================= -->
+
+    <section class="finalMessage">
+
+        <div class="finalTitle">
+            I LOVE YOU WESAM ❤️
+        </div>
+
+        <div class="finalText">
+
+            إن شاء الله كل اللي بنتمناه يتحقق،
+            ونعيش كل اللحظات الحلوة
+            اللي بنحلم بيها سوا ❤️
+
+            <br><br>
+
+            وربنا يجمعنا دايمًا على خير،
+            ونفضل جنب بعض
+            ومش نفارق بعض أبدًا 🫂❤️
+
+            <br><br>
+
+            بحبك يا بطتي...
+            وهنفضل سوا إن شاء الله ❤️🥹
+
+        </div>
+
+    </section>
+
+
+    <!-- زر الموسيقى -->
+
+    <button
+        id="musicButton"
+        onclick="toggleMusic()"
+    >
+        🔊 Music On
+    </button>
+
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   كلمة السر
+========================= */
+
+function unlock() {
+
+    const input =
+        document.getElementById(
+            "passwordInput"
+        );
+
+    const password =
+        input.value;
+
+    if (password === "love") {
+
+        document
+            .getElementById(
+                "passwordScreen"
+            )
+            .style.display = "none";
+
+        document
+            .getElementById(
+                "mainContent"
+            )
+            .style.display = "block";
+
+        const music =
+            document.getElementById(
+                "music"
+            );
+
+        music.play().catch(() => {
+            console.log(
+                "Music needs permission"
+            );
+        });
+
+        startEffects();
+
+        startScrollAnimations();
+
+    } else {
+
+        document
+            .getElementById(
+                "errorMessage"
+            )
+            .style.display = "block";
+
+        input.value = "";
+
+    }
+
+}
+
+
+/* =========================
+   Enter
+========================= */
+
+document
+    .getElementById(
+        "passwordInput"
+    )
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                unlock();
+
+            }
+
+        }
+    );
+
+
+/* =========================
+   ظهور الصور والكلام مع Scroll
+========================= */
+
+function startScrollAnimations() {
+
+    const elements =
+        document.querySelectorAll(
+            ".photoSection, .surprise"
+        );
+
+    const observer =
+        new IntersectionObserver(
+            function(entries) {
+
+                entries.forEach(
+                    function(entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target
+                                .classList
+                                .add("show");
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.2
+            }
+        );
+
+
+    elements.forEach(
+        function(element) {
+
+            observer.observe(
+                element
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   القلوب والكلام المتساقط
+========================= */
+
+function startEffects() {
+
+    setInterval(
+        function() {
+
+            const text =
+                document.createElement(
+                    "div"
+                );
+
+            text.className =
+                "fallingText";
+
+            text.innerText =
+                "I LOVE YOU ❤️";
+
+            text.style.left =
+                Math.random() *
+                100 +
+                "vw";
+
+
+            const colors = [
+
+                "#ff00ff",
+
+                "#00ffff",
+
+                "#ff4fd8",
+
+                "#ffffff"
+
+            ];
+
+
+            const color =
+                colors[
+                    Math.floor(
+                        Math.random() *
+                        colors.length
+                    )
+                ];
+
+
+            text.style.color =
+                color;
+
+
+            text.style.textShadow =
+                "0 0 10px " +
+                color +
+                ", 0 0 25px " +
+                color;
+
+
+            text.style.animationDuration =
+                (
+                    5 +
+                    Math.random() * 7
+                ) +
+                "s";
+
+
+            document.body.appendChild(
+                text
+            );
+
+
+            setTimeout(
+                function() {
+
+                    text.remove();
+
+                },
+                13000
+            );
+
+
+        },
+        500
+    );
+
+
+    setInterval(
+        function() {
+
+            const heart =
+                document.createElement(
+                    "div"
+                );
+
+            heart.className =
+                "heart";
+
+            heart.innerText =
+                "❤️";
+
+            heart.style.left =
+                Math.random() *
+                100 +
+                "vw";
+
+
+            heart.style.fontSize =
+                (
+                    15 +
+                    Math.random() * 30
+                ) +
+                "px";
+
+
+            heart.style.animationDuration =
+                (
+                    5 +
+                    Math.random() * 7
+                ) +
+                "s";
+
+
+            document.body.appendChild(
+                heart
+            );
+
+
+            setTimeout(
+                function() {
+
+                    heart.remove();
+
+                },
+                13000
+            );
+
+
+        },
+        700
+    );
+
+}
+
+
+/* =========================
+   الموسيقى
+========================= */
+
+function toggleMusic() {
+
+    const music =
+        document.getElementById(
+            "music"
+        );
+
+    const button =
+        document.getElementById(
+            "musicButton"
+        );
+
+
+    if (
+        music.paused
+    ) {
+
+        music.play();
+
+        button.innerText =
+            "🔊 Music On";
+
+    } else {
+
+        music.pause();
+
+        button.innerText =
+            "🔇 Music Off";
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
