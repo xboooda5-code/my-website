@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Wesam ❤️</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* شاشة البداية */
+
+#startScreen {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at center, #30002f, #000 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+#startScreen h1 {
+    font-size: clamp(40px, 10vw, 80px);
+    color: #ff4fd8;
+    text-shadow:
+        0 0 10px #ff4fd8,
+        0 0 30px #ff00cc,
+        0 0 60px #ff00cc;
+    animation: pulse 2s infinite;
+}
+
+#startScreen p {
+    margin-top: 25px;
+    color: #00ffff;
+    font-size: 18px;
+    text-shadow: 0 0 15px #00ffff;
+}
+
+/* الموقع */
+
+#mainContent {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at center,
+        #180018 0%,
+        #050005 50%,
+        #000 100%);
+}
+
+/* المحتوى */
+
+.center {
+    position: absolute;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+}
+
+.smallText {
+    color: #00ffff;
+    font-size: 18px;
+    margin-bottom: 8px;
+    text-shadow: 0 0 15px #00ffff;
+}
+
+.name {
+    font-size: clamp(50px, 12vw, 100px);
+    color: #ff4fd8;
+    text-shadow:
+        0 0 10px #ff4fd8,
+        0 0 30px #ff00cc,
+        0 0 60px #ff00cc;
+    animation: glow 2s infinite alternate;
+}
+
+.title {
+    margin-top: 5px;
+    font-size: clamp(35px, 9vw, 80px);
+    color: white;
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #ff00ff,
+        0 0 50px #00ffff;
+    animation: pulse 2s infinite;
+}
+
+/* الصور */
+
+.photos {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.photos img {
+    width: 105px;
+    height: 105px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ff4fd8;
+    box-shadow:
+        0 0 10px #ff4fd8,
+        0 0 25px #ff00cc,
+        0 0 40px #00ffff;
+    animation: photoFloat 3s infinite alternate;
+}
+
+.photos img:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.photos img:nth-child(3) {
+    animation-delay: 1s;
+}
+
+/* الرسالة */
+
+.message {
+    max-width: 700px;
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: white;
+    text-shadow: 0 0 10px #ff4fd8;
+    min-height: 80px;
+}
+
+/* الكلام المتساقط */
+
+.fallingText {
+    position: absolute;
+    top: -100px;
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+    pointer-events: none;
+    animation: fall linear forwards;
+    z-index: 2;
+}
+
+/* القلوب */
+
+.heart {
+    position: absolute;
+    top: -100px;
+    pointer-events: none;
+    animation: heartFall linear forwards;
+    z-index: 3;
+}
+
+/* زر الموسيقى */
+
+#musicButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    background: rgba(0,0,0,0.8);
+    color: #00ffff;
+    border: 2px solid #00ffff;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 25px #00ffff;
+}
+
+/* الحركات */
+
+@keyframes fall {
+
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes heartFall {
+
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes glow {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+}
+
+@keyframes pulse {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes photoFloat {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+/* الموبايل */
+
+@media (max-width: 600px) {
+
+    .photos img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .message {
+        font-size: 15px;
+        max-width: 92%;
+    }
+
+    .smallText {
+        font-size: 15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- شاشة البداية -->
+
+<div id="startScreen" onclick="startWebsite()">
+
+    <h1>For Wesam ❤️</h1>
+
+    <p>
+        اضغطي هنا عشان تفتحي المفاجأة ✨
+    </p>
+
+</div>
+
+
+<!-- الموقع -->
+
+<div id="mainContent">
+
+
+<!-- الأغنية -->
+
+<audio id="music" loop>
+
+    <source src="music.mp3" type="audio/mpeg">
+
+</audio>
+
+
+<!-- المحتوى -->
+
+<div class="center">
+
+    <div class="smallText">
+        To the most beautiful person...
+    </div>
+
+
+    <div class="name">
+        وسام ❤️
+    </div>
+
+
+    <div class="title">
+        I LOVE YOU
+    </div>
+
+
+    <!-- الصور -->
+
+    <div class="photos">
+
+        <img
+        src="IMG-20260719-WA0002.jpg"
+        alt="Wesam">
+
+        <img
+        src="IMG-20260719-WA0004.jpg"
+        alt="Wesam">
+
+        <img
+        src="lv_0_20260607233345.jpg"
+        alt="Wesam">
+
+    </div>
+
+
+    <!-- الرسالة -->
+
+    <div
+    class="message"
+    id="message">
+    </div>
+
+</div>
+
+
+<!-- زر الموسيقى -->
+
+<button
+id="musicButton"
+onclick="toggleMusic(event)">
+
+🔊 Music On
+
+</button>
+
+
+</div>
+
+
+<script>
+
+
+/* الرسالة */
+
+const messageText =
+"وسام... ❤️ وجودك في حياتي من أجمل الحاجات اللي حصلتلي. يمكن الكلام عمره ما يقدر يوصف كل اللي جوايا، بس أنا عايزك تعرفي إنك شخص غالي جدًا على قلبي. كل مرة بشوف فيها ابتسامتك بحس إن الدنيا بقت أجمل، وكل لحظة معاكي ليها مكان خاص عندي. أتمنى دايمًا أشوفك مبسوطة، وأكون سبب في ابتسامتك ولو حتى بحاجة بسيطة. مهما حاولت أوصفلك مكانتك عندي، هفضل حاسس إن الكلام قليل عليكي. I Love You, Wesam ❤️";
+
+
+/* تشغيل الموقع */
+
+function startWebsite() {
+
+    document.getElementById("startScreen").style.display = "none";
+
+    document.getElementById("mainContent").style.display = "block";
+
+    const music = document.getElementById("music");
+
+    music.play().catch(() => {
+        console.log("Music needs interaction");
+    });
+
+    createFallingText();
+
+    createHearts();
+
+    typeMessage();
+
+}
+
+
+/* الكتابة حرف حرف */
+
+function typeMessage() {
+
+    const message =
+    document.getElementById("message");
+
+    let index = 0;
+
+    function type() {
+
+        if (index < messageText.length) {
+
+            message.innerHTML +=
+            messageText.charAt(index);
+
+            index++;
+
+            setTimeout(type, 45);
+
+        }
+
+    }
+
+    type();
+
+}
+
+
+/* الكلام المتساقط */
+
+function createFallingText() {
+
+    const colors = [
+        "#ff00ff",
+        "#00ffff",
+        "#ff0055",
+        "#ffff00",
+        "#00ff88"
+    ];
+
+    setInterval(() => {
+
+        const text =
+        document.createElement("div");
+
+        text.className =
+        "fallingText";
+
+        text.innerText =
+        "I LOVE YOU ❤️";
+
+        text.style.left =
+        Math.random() * 100 + "vw";
+
+        const color =
+        colors[
+        Math.floor(
+        Math.random() * colors.length
+        )
+        ];
+
+        text.style.color = color;
+
+        text.style.textShadow =
+        "0 0 10px " +
+        color +
+        ", 0 0 25px " +
+        color;
+
+        text.style.animationDuration =
+        (5 + Math.random() * 7) + "s";
+
+        document
+        .getElementById("mainContent")
+        .appendChild(text);
+
+        setTimeout(() => {
+            text.remove();
+        }, 13000);
+
+    }, 350);
+
+}
+
+
+/* القلوب */
+
+function createHearts() {
+
+    setInterval(() => {
+
+        const heart =
+        document.createElement("div");
+
+        heart.className =
+        "heart";
+
+        heart.innerText =
+        "❤️";
+
+        heart.style.left =
+        Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+        (15 + Math.random() * 30) + "px";
+
+        heart.style.animationDuration =
+        (5 + Math.random() * 7) + "s";
+
+        document
+        .getElementById("mainContent")
+        .appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 13000);
+
+    }, 600);
+
+}
+
+
+/* تشغيل وإيقاف الموسيقى */
+
+function toggleMusic(event) {
+
+    event.stopPropagation();
+
+    const music =
+    document.getElementById("music");
+
+    const button =
+    document.getElementById("musicButton");
+
+    if (music.paused) {
+
+        music.play();
+
+        button.innerText =
+        "🔊 Music On";
+
+    } else {
+
+        music.pause();
+
+        button.innerText =
+        "🔇 Music Off";
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
